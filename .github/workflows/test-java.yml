@@ -20,10 +20,8 @@ jobs:
           java-version: "17"
           distribution: "temurin"
 
-      - name: Compile Java sources
+      - name: Compile all Java sources
         run: |
           mkdir -p build
-          javac -d build src/*.java
-
-      - name: Run main class (Exo1 by défaut)
-        run: java -cp build Exo1
+          find src -name "*.java" > sources.txt
+          javac -d build @sources.txt
